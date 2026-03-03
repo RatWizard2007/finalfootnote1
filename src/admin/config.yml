@@ -1,0 +1,29 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "src/assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "posts"
+    label: "Posts"
+    folder: "src/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Author", name: "author", widget: "string", default: "NOAH EDIT HERE" }
+      - { label: "Location", name: "location", widget: "string", required: false }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - "Dispatch"
+          - "Feature"
+          - "Note"
+          - "Bulletin"
+      - { label: "Featured Image", name: "image", widget: "image", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Tags", name: "tags", widget: "hidden", default: ["posts"] }
