@@ -1,12 +1,41 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>FINAL FOOTNOTE</title>
-</head>
-<body style="background:#5b21b6;color:white;text-align:center;padding-top:100px;font-family:Georgia,serif;">
-<h1>FINAL FOOTNOTE</h1>
-<p>Independent reporting.</p>
-<p><a href="/stories/" style="color:white;">Read Stories</a></p>
-</body>
-</html>
+---
+layout: base.njk
+title: FINAL FOOTNOTE
+---
+
+<section class="hero">
+
+  {% set featured = collections.posts | reverse | first %}
+
+  {% if featured %}
+    <h2 class="hero-label">Field Dispatch</h2>
+    <h1 class="hero-title">
+      <a href="{{ featured.url }}">{{ featured.data.title }}</a>
+    </h1>
+    <p class="hero-excerpt">
+      {{ featured.templateContent | striptags | truncate(200) }}
+    </p>
+  {% else %}
+    <h2 class="hero-label">Field Dispatch</h2>
+    <p class="coming-soon">Dispatches coming soon.</p>
+  {% endif %}
+
+</section>
+
+<section class="recent">
+
+  <h3 class="section-title">Recent Dispatches</h3>
+
+  {% set posts = collections.posts | reverse %}
+
+  {% if posts.length > 1 %}
+    <ul class="dispatch-list">
+    {% for post in posts.slice(1) %}
+      <li>
+        <a href="{{ post.url }}">{{ post.data.title }}</a>
+      </li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+
+</section>
