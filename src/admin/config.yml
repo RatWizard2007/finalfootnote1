@@ -14,7 +14,7 @@ collections:
 
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Author", name: "author", widget: "string", default: "NOAH EDIT HERE" }
+      - { label: "Author", name: "author", widget: "string", default: "N. F." }
       - { label: "Location", name: "location", widget: "string", required: false }
       - label: "Category"
         name: "category"
